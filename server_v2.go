@@ -21,7 +21,7 @@ import (
 const (
 	host     = "localhost"
 	database = "aiDB"
-	user     = "Calvin_Huang"
+	user     = "Aslip"
 	// user     = "root"
 	password = "123456"
 )
