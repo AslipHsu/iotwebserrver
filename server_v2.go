@@ -24,7 +24,13 @@ const (
 	user     = "Aslip"
 	// user     = "root"
 	password = "123456"
+	//mail
 	testMail = "testMail"
+	testClientMail = "testClientMail"
+	testPassword = "testPassword"
+	//line Auth Code
+	lineAuthCode = "lineAuthCode"
+	
 )
 
 // json binding struct
@@ -170,7 +176,7 @@ func checkErr(err error) {
 
 // send line message
 func notifyHandler(msg string) {
-	authorization_code := `LI8tw1WCkVD63d5MeGnFJSA0cht3rXO7BiaBtX7MmKI`
+	authorization_code := lineAuthCode
 	client := &http.Client{}
 	req, err := http.NewRequest("POST", "https://notify-api.line.me/api/notify", strings.NewReader("message="+msg))
 	checkErr(err)
@@ -528,7 +534,7 @@ func electAPI(ctx *gin.Context) {
 		fmt.Println("send msg")
 		tx := fmt.Sprintln("Probe_no:", electmsg.Powerprobe_no, "功耗:", electmsg.Data_sum, "。高出正常值，請立即前往查看 http://web.wasay.cc/")
 		notifyHandler(tx)
-		// foo := New("bearlinm8866@gmail.com", "googlegoogle")
+		// foo := New(testClientMail, testPassword)
 		// foo.Send("[系統通知]AI監測電力數據異常", tx, testMail)
 		fmt.Println("send complete")
 	}
@@ -762,8 +768,8 @@ func thAPI(ctx *gin.Context) {
 		fmt.Println("send msg")
 		tx := fmt.Sprintln("Gateway_no:", thmsg.Gateway_no, "Sensor_no:", thmsg.Sensor_no, "溫濕度:", thmsg.Value, " 。數據高出正常值，請立即前往查看 http://web.wasay.cc/")
 		notifyHandler(tx)
-		// foo := New("bearlinm8866@gmail.com", "googlegoogle")
-		// foo.Send("[系統通知]AI監測溫濕度數據異常", tx, "bear_linm8866@yahoo.com.tw")
+		// foo := New(testClientMail, testPassword)
+		// foo.Send("[系統通知]AI監測溫濕度數據異常", tx, testMail)
 		fmt.Println("send complete")
 	}
 	//nwest record
