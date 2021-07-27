@@ -24,6 +24,7 @@ const (
 	user     = "Aslip"
 	// user     = "root"
 	password = "123456"
+	testMail = "testMail"
 )
 
 // json binding struct
@@ -528,7 +529,7 @@ func electAPI(ctx *gin.Context) {
 		tx := fmt.Sprintln("Probe_no:", electmsg.Powerprobe_no, "功耗:", electmsg.Data_sum, "。高出正常值，請立即前往查看 http://web.wasay.cc/")
 		notifyHandler(tx)
 		// foo := New("bearlinm8866@gmail.com", "googlegoogle")
-		// foo.Send("[系統通知]AI監測電力數據異常", tx, "bear_linm8866@yahoo.com.tw")
+		// foo.Send("[系統通知]AI監測電力數據異常", tx, testMail)
 		fmt.Println("send complete")
 	}
 	//nwest record
